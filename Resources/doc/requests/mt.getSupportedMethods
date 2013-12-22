@@ -1,0 +1,5 @@
+#!/bin/sh
+echo '<?xml version="1.0" encoding="utf-8"?>
+<methodCall>
+ <methodName>mt.getSupportedMethods</methodName>
+</methodCall>' | http -v POST "http://vm:88/xmlrpc.php" "Content-Type:text/xml" "Cookie:XDEBUG_SESSION=PHPSTORM"

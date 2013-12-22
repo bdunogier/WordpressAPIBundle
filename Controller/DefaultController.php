@@ -203,6 +203,27 @@ class DefaultController
         );
     }
 
+    public function getSupportedMethods()
+    {
+        return new Response(
+            array(
+                'blogger.getUsersBlogs',
+                'mt.getRecentPostTitles',
+                'mt.getCategoryList',
+                'mt.setPostCategories',
+                'mt.getPostCategories',
+                'mt.supportedMethods',
+                'metaWeblog.getCategories',
+                'metaWeblog.getRecentPosts',
+                'metaWeblog.newPost',
+                'metaWeblog.editpost',
+                'metaWeblog.deletePost',
+                'metaWeblog.getPost',
+                'metaWeblog.getCategories'
+            )
+        );
+    }
+
     private function login( Request $request )
     {
         $user = $this->userService->loadUserByCredentials(
