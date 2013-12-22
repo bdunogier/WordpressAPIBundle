@@ -4,6 +4,7 @@ namespace BD\Bundle\WordpressAPIBundle\Controller;
 
 use eZ\Publish\API\Repository\ContentService;
 use eZ\Publish\API\Repository\ContentTypeService;
+use eZ\Publish\API\Repository\Exceptions\NotFoundException;
 use eZ\Publish\API\Repository\LocationService;
 use eZ\Publish\API\Repository\Repository;
 use eZ\Publish\API\Repository\SearchService;
@@ -220,6 +221,22 @@ class DefaultController
                 'metaWeblog.deletePost',
                 'metaWeblog.getPost',
                 'metaWeblog.getCategories'
+            )
+        );
+    }
+
+    public function getUserInfo( Request $request )
+    {
+        $this->login( $request );
+        $user = $this->repository->getCurrentUser();
+
+        return new Response(
+            array(
+                'userid' => $user->contentInfo->id,
+                'nickname' => $user->contentInfo->name,
+                'firstname' => (string)$user->getFieldValue( 'first_name' ),
+                'lastname' => (string)$user->getFieldValue( 'last_name' ),
+                'url' => '',
             )
         );
     }

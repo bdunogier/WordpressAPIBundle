@@ -3,6 +3,11 @@ wordpress_api.blogger.getLatestContent:
     defaults:
         _controller: bd_wordpress_api.controller:getUsersBlogAction
 
+wordpress_api.blogger.getUserInfo:
+    path: /xmlrpc/blogger.getUserInfo
+    defaults:
+        _controller: bd_wordpress_api.controller:getUserInfo
+
 wordpress_api.mt.getRecentPostTitles:
     path: /xmlrpc/mt.getRecentPostTitles
     defaults:
