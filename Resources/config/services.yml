@@ -1,0 +1,8 @@
+parameters:
+    bd_wordpress_api.controller.class: BD\Bundle\WordpressAPIBundle\Controller\DefaultController
+
+services:
+    bd_wordpress_api.controller:
+        class: %bd_wordpress_api.controller.class%
+        arguments:
+            - @ezpublish.api.repository

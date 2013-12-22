@@ -1,0 +1,77 @@
+#!/bin/sh
+echo '<?xml version="1.0" encoding="utf-8"?>
+<methodCall>
+ <methodName>metaWeblog.newPost</methodName>
+ <params>
+  <param>
+   <value>
+    <string>1</string>
+   </value>
+  </param>
+  <param>
+   <value>
+    <string>admin</string>
+   </value>
+  </param>
+  <param>
+   <value>
+    <string>publish</string>
+   </value>
+  </param>
+  <param>
+   <value>
+    <struct>
+     <member>
+      <name>title</name>
+      <value>
+       <string>Titre du billet</string>
+      </value>
+     </member>
+     <member>
+      <name>description</name>
+      <value>
+       <string>&lt;p&gt;Corps du billet&lt;/p&gt;</string>
+      </value>
+     </member>
+     <member>
+      <name>mt_text_more</name>
+      <value>
+       <string />
+      </value>
+     </member>
+     <member>
+      <name>mt_keywords</name>
+      <value>
+       <string />
+      </value>
+     </member>
+     <member>
+      <name>categories</name>
+      <value>
+       <array>
+        <data />
+       </array>
+      </value>
+     </member>
+     <member>
+      <name>mt_excerpt</name>
+      <value>
+       <string />
+      </value>
+     </member>
+     <member>
+      <name>mt_tb_ping_urls</name>
+      <value>
+       <string>(valeurs séparées par des virgules)</string>
+      </value>
+     </member>
+    </struct>
+   </value>
+  </param>
+  <param>
+   <value>
+    <boolean>0</boolean>
+   </value>
+  </param>
+ </params>
+</methodCall>' | http -v POST "http://vm:88/xmlrpc.php" "Content-Type:text/xml" "Cookie:XDEBUG_SESSION=PHPSTORM"

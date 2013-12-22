@@ -1,0 +1,50 @@
+#!/bin/sh
+echo '<?xml version="1.0" encoding="utf-8"?>
+<methodCall>
+ <methodName>mt.setPostCategories</methodName>
+ <params>
+  <param>
+   <value>
+    <string>455</string>
+   </value>
+  </param>
+  <param>
+   <value>
+    <string>admin</string>
+   </value>
+  </param>
+  <param>
+   <value>
+    <string>publish</string>
+   </value>
+  </param>
+  <param>
+   <value>
+    <array>
+     <data>
+      <value>
+       <struct>
+        <member>
+         <name>categoryId</name>
+         <value>
+          <string>336</string>
+         </value>
+        </member>
+       </struct>
+      </value>
+      <value>
+       <struct>
+        <member>
+         <name>categoryId</name>
+         <value>
+          <string>334</string>
+         </value>
+        </member>
+       </struct>
+      </value>
+     </data>
+    </array>
+   </value>
+  </param>
+ </params>
+</methodCall>' | http -v POST "http://vm:88/xmlrpc.php" "Content-Type:text/xml" "Cookie:XDEBUG_SESSION=PHPSTORM"

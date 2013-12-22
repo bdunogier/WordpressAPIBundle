@@ -1,0 +1,59 @@
+wordpress_api.blogger.getLatestContent:
+    path: /xmlrpc/blogger.getUsersBlogs
+    defaults:
+        _controller: bd_wordpress_api.controller:getUsersBlogAction
+
+wordpress_api.mt.getCategoryList:
+    path: /xmlrpc/mt.getCategoryList
+    defaults:
+        _controller: bd_wordpress_api.controller:getCategoryList
+
+wordpress_api.metaWeblog.getCategories:
+    path: /xmlrpc/metaWeblog.getCategories
+    defaults:
+        _controller: bd_wordpress_api.controller:getCategoryList
+
+wordpress_api.metaWeblog.getRecentPosts:
+    path: /xmlrpc/metaWeblog.getRecentPosts
+    defaults:
+        _controller: bd_wordpress_api.controller:getRecentPosts
+
+wordpress_api.mt.getRecentPostTitles:
+    path: /xmlrpc/mt.getRecentPostTitles
+    defaults:
+        _controller: bd_wordpress_api.controller:getRecentPosts
+
+wordpress_api.metaWeblog.newPost:
+    path: /xmlrpc/metaWeblog.newPost
+    defaults:
+        _controller: bd_wordpress_api.controller:newPost
+
+wordpress_api.metaWeblog.editpost:
+    path: /xmlrpc/metaWeblog.editPost
+    defaults:
+        _controller: bd_wordpress_api.controller:editPost
+
+wordpress_api.metaWeblog.deletePost:
+    path: /xmlrpc/metaWeblog.deletePost
+    defaults:
+        _controller: bd_wordpress_api.controller:deletePost
+
+wordpress_api.metaWeblog.getPost:
+    path: /xmlrpc/metaWeblog.getPost
+    defaults:
+        _controller: bd_wordpress_api.controller:getPost
+
+wordpress_api.metaWeblog.getCategories:
+    path: /xmlrpc/metaWeblog.getCategories
+    defaults:
+        _controller: bd_wordpress_api.controller:getPostCategories
+
+wordpress_api.mt.setPostCategories:
+    path: /xmlrpc/mt.setPostCategories
+    defaults:
+        _controller: bd_wordpress_api.controller:setPostCategories
+
+wordpress_api.mt.getPostCategories:
+    path: /xmlrpc/mt.getPostCategories
+    defaults:
+        _controller: bd_wordpress_api.controller:getPostCategories
