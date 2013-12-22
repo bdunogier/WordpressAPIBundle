@@ -24,7 +24,7 @@ wordpress_api.mt.getCategoryList:
         _controller: bd_wordpress_api.controller:getCategoryList
 
 wordpress_api.mt.setPostCategories:
-    path: /xmlrpc/mt.setPostCategories
+    path: /xmlrpc/mt.setPostCategories/{postId}
     defaults:
         _controller: bd_wordpress_api.controller:setPostCategories
 

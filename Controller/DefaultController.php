@@ -124,13 +124,13 @@ class DefaultController
         return new Response( $content->id );
     }
 
-    public function setPostCategories( Request $request )
+    public function setPostCategories( $postId, Request $request )
     {
-        $this->login( $request->request->get( '0' ), $request->request->get( '1' ) );
+        $this->login( $request->request->get( 'username' ), $request->request->get( 'password' ) );
 
         // @todo Replace categories instead of adding
-        $contentInfo = $this->contentService->loadContentInfo( $request->request->get( '0' ) );
-        foreach ( $request->request->get( '3' ) as $category )
+        $contentInfo = $this->contentService->loadContentInfo( $postId );
+        foreach ( $request->request->get( 'categories' ) as $category )
         {
             $this->locationService->createLocation(
                 $contentInfo,
