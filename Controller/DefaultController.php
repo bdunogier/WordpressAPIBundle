@@ -227,8 +227,10 @@ class DefaultController
 
     public function getUserInfo( Request $request )
     {
-        $this->login( $request );
-        $user = $this->repository->getCurrentUser();
+        $user = $this->userService->loadUserByCredentials(
+            $request->request->get( 'username' ),
+            $request->request->get( 'password' )
+        );
 
         return new Response(
             array(

@@ -1,8 +1,14 @@
 parameters:
     bd_wordpress_api.controller.class: BD\Bundle\WordpressAPIBundle\Controller\DefaultController
+    bd_wordpress_api.xml_rpc.param_processor.get_user_info.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\GetUserInfo
 
 services:
     bd_wordpress_api.controller:
         class: %bd_wordpress_api.controller.class%
         arguments:
             - @ezpublish.api.repository
+
+    bd_wordpress_api.xml_rpc.param_processor.get_user_info:
+        class: %bd_wordpress_api.xml_rpc.param_processor.get_user_info.class%
+        tags:
+            - { name: bdxmlrpc.parameters_processor, methodName: blogger.getUserInfo }

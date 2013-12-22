@@ -8,6 +8,11 @@ wordpress_api.blogger.getUserInfo:
     defaults:
         _controller: bd_wordpress_api.controller:getUserInfo
 
+wordpress_api.blogger.getPost:
+    path: /xmlrpc/blogger.getPost
+    defaults:
+        _controller: bd_wordpress_api.controller:getPost
+
 wordpress_api.mt.getRecentPostTitles:
     path: /xmlrpc/mt.getRecentPostTitles
     defaults:
