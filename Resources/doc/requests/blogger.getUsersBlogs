@@ -19,4 +19,4 @@ echo '<?xml version="1.0" encoding="utf-8"?>
    </value>
   </param>
  </params>
-</methodCall>' | http -v POST "http://vm:88/xmlrpc.php"
+</methodCall>' | http -v POST "http://vm:88/xmlrpc.php" "Content-Type:text/xml"
