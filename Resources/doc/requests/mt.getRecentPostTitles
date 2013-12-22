@@ -20,7 +20,7 @@ echo '<?xml version="1.0" encoding="utf-8"?>
   </param>
   <param>
    <value>
-    <string>5</string>
+    <string>2</string>
    </value>
   </param>
  </params>

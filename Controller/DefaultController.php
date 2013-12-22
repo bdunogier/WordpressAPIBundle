@@ -79,11 +79,11 @@ class DefaultController
         );
     }
 
-    public function getRecentPosts()
+    public function getRecentPosts( Request $request )
     {
         $query = new Query();
         $query->criterion = new Query\Criterion\ContentTypeIdentifier( 'blog_post' );
-        $query->limit = 5;
+        $query->limit = $request->request->has( 'limit' ) ? $request->request->get( 'limit' ) : 5;
 
         $results = $this->searchService->findContent( $query );
         $recentPosts = array();
