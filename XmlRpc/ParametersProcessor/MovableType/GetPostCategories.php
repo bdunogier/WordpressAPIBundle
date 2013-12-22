@@ -6,24 +6,22 @@
  * @license http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License v2
  * @version //autogentag//
  */
-namespace BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\MetaWeblog;
+namespace BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\MovableType;
 
 use BD\Bundle\XmlRpcBundle\XmlRpc\ParametersProcessorInterface;
 
-class DeletePost implements ParametersProcessorInterface
+class GetPostCategories implements ParametersProcessorInterface
 {
     public function getRoutePathArguments( $parameters )
     {
-        return array( $parameters[1] );
+        return array( $parameters[0] );
     }
 
     public function getParameters( $parameters )
     {
         return array(
-            'appkey' => $parameters[0],
-            'username' => $parameters[2],
-            'password' => $parameters[3],
-            'publish' => isset( $parameters[4] ) ? $parameters[4] : true
+            'username' => $parameters[1],
+            'password' => $parameters[2],
         );
     }
 }

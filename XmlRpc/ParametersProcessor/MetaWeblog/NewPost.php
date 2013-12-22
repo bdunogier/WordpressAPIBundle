@@ -10,20 +10,21 @@ namespace BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\MetaWeblog;
 
 use BD\Bundle\XmlRpcBundle\XmlRpc\ParametersProcessorInterface;
 
-class DeletePost implements ParametersProcessorInterface
+class NewPost implements ParametersProcessorInterface
 {
     public function getRoutePathArguments( $parameters )
     {
-        return array( $parameters[1] );
+        return array();
     }
 
     public function getParameters( $parameters )
     {
         return array(
-            'appkey' => $parameters[0],
-            'username' => $parameters[2],
-            'password' => $parameters[3],
-            'publish' => isset( $parameters[4] ) ? $parameters[4] : true
+            'blogId' => $parameters[0],
+            'username' => $parameters[1],
+            'password' => $parameters[2],
+            'content' => $parameters[3],
+            'publish' => isset( $parameters[4] ) ? (bool)$parameters[4] : true
         );
     }
 }

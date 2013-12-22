@@ -24,7 +24,7 @@ echo '<?xml version="1.0" encoding="utf-8"?>
      <member>
       <name>title</name>
       <value>
-       <string>Titre du billet</string>
+       <string>API power !</string>
       </value>
      </member>
      <member>

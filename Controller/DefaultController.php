@@ -105,13 +105,13 @@ class DefaultController
 
     public function newPost( Request $request )
     {
-        $this->login( $request->request->get( '0' ), $request->request->get( '1' ) );
+        $this->login( $request->request->get( 'username' ), $request->request->get( 'password' ) );
 
         $createStruct = $this->contentService->newContentCreateStruct(
             $this->contentTypeService->loadContentTypeByIdentifier( 'blog_post' ),
             'eng-GB'
         );
-        $postData = $request->request->get( '3' );
+        $postData = $request->request->get( 'content' );
         $createStruct->setField( 'title', $postData['title'] );
 
         $draft = $this->contentService->createContent(
@@ -140,14 +140,10 @@ class DefaultController
         return new Response( true );
     }
 
-    public function getPostCategories( Request $request )
+    public function getPostCategories( $postId )
     {
-        $contentInfo = $this->contentService->loadContentInfo(
-            $request->request->get( '0' )
-        );
-        $locations = $this->locationService->loadLocations(
-            $contentInfo
-        );
+        $contentInfo = $this->contentService->loadContentInfo( $postId );
+        $locations = $this->locationService->loadLocations( $contentInfo );
 
         $categories = array();
         foreach ( $locations as $location )
