@@ -9,7 +9,7 @@ wordpress_api.blogger.getUserInfo:
         _controller: bd_wordpress_api.controller:getUserInfo
 
 wordpress_api.blogger.getPost:
-    path: /xmlrpc/blogger.getPost
+    path: /xmlrpc/blogger.getPost/{postId}
     defaults:
         _controller: bd_wordpress_api.controller:getPost
 
@@ -64,7 +64,7 @@ wordpress_api.metaWeblog.deletePost:
         _controller: bd_wordpress_api.controller:deletePost
 
 wordpress_api.metaWeblog.getPost:
-    path: /xmlrpc/metaWeblog.getPost
+    path: /xmlrpc/metaWeblog.getPost/{postId}
     defaults:
         _controller: bd_wordpress_api.controller:getPost
 

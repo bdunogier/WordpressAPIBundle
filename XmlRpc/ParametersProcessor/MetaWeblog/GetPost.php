@@ -6,21 +6,20 @@
  * @license http://www.gnu.org/licenses/gpl-2.0.txt GNU General Public License v2
  * @version //autogentag//
  */
-namespace BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor;
+namespace BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\MetaWeblog;
 
 use BD\Bundle\XmlRpcBundle\XmlRpc\ParametersProcessorInterface;
 
-class GetUserInfo implements ParametersProcessorInterface
+class GetPost implements ParametersProcessorInterface
 {
     public function getRoutePathArguments( $parameters )
     {
-        return array();
+        return array( $parameters[0] );
     }
 
     public function getParameters( $parameters )
     {
         return array(
-            'appkey'   => $parameters[0],
             'username' => $parameters[1],
             'password' => $parameters[2],
         );

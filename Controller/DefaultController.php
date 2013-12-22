@@ -181,10 +181,10 @@ class DefaultController
         return new Response( true );
     }
 
-    public function getPost( Request $request )
+    public function getPost( $postId, Request $request )
     {
         $content = $this->contentService->loadContent(
-            $request->request->get( '0' )
+            $postId
         );
 
         return new Response(
