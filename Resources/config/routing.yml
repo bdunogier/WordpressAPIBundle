@@ -59,7 +59,7 @@ wordpress_api.metaWeblog.editpost:
         _controller: bd_wordpress_api.controller:editPost
 
 wordpress_api.metaWeblog.deletePost:
-    path: /xmlrpc/metaWeblog.deletePost
+    path: /xmlrpc/metaWeblog.deletePost/{postId}
     defaults:
         _controller: bd_wordpress_api.controller:deletePost
 

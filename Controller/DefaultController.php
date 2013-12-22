@@ -8,6 +8,7 @@ use eZ\Publish\API\Repository\Exceptions\NotFoundException;
 use eZ\Publish\API\Repository\LocationService;
 use eZ\Publish\API\Repository\Repository;
 use eZ\Publish\API\Repository\SearchService;
+use eZ\Publish\API\Repository\UserService;
 use eZ\Publish\API\Repository\Values\Content\Query;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use BD\Bundle\XmlRpcBundle\XmlRpc\Response;
@@ -104,7 +105,7 @@ class DefaultController
 
     public function newPost( Request $request )
     {
-        $this->login( $request );
+        $this->login( $request->request->get( '0' ), $request->request->get( '1' ) );
 
         $createStruct = $this->contentService->newContentCreateStruct(
             $this->contentTypeService->loadContentTypeByIdentifier( 'blog_post' ),
@@ -125,7 +126,7 @@ class DefaultController
 
     public function setPostCategories( Request $request )
     {
-        $this->login( $request );
+        $this->login( $request->request->get( '0' ), $request->request->get( '1' ) );
 
         // @todo Replace categories instead of adding
         $contentInfo = $this->contentService->loadContentInfo( $request->request->get( '0' ) );
@@ -170,22 +171,18 @@ class DefaultController
         return new Response( true );
     }
 
-    public function deletePost( Request $request )
+    public function deletePost( $postId, Request $request )
     {
-        $this->login( $request );
+        $this->login( $request->request->get( 'username' ), $request->request->get( 'password' ) );
         $this->contentService->deleteContent(
-            $this->contentService->loadContentInfo(
-                $request->request->get( '0' )
-            )
+            $this->contentService->loadContentInfo( $postId )
         );
         return new Response( true );
     }
 
-    public function getPost( $postId, Request $request )
+    public function getPost( $postId )
     {
-        $content = $this->contentService->loadContent(
-            $postId
-        );
+        $content = $this->contentService->loadContent( $postId );
 
         return new Response(
             array(
@@ -243,12 +240,10 @@ class DefaultController
         );
     }
 
-    private function login( Request $request )
+    private function login( $username, $password )
     {
-        $user = $this->userService->loadUserByCredentials(
-            $request->request->get( '1' ),
-            $request->request->get( '2' )
+        $this->repository->setCurrentUser(
+            $this->userService->loadUserByCredentials( $username, $password )
         );
-        $this->repository->setCurrentUser( $user );
     }
 }
