@@ -1,0 +1,20 @@
+{
+    "name": "bdunogier/wordpressapibundle",
+    "description": "Wordpress API bridge for Symfony 2",
+    "license": "GPL-2.0",
+    "authors": [
+        {
+            "name": "Bertrand Dunogier",
+            "homepage": "https://github.com/bdunogier"
+        }
+    ],
+    "require": {
+        "bdunogier/xmlrpcbundle": "@dev",
+        "ezsystems/ezpublish-kernel": "@dev"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-0": {"BD\\Bundle\\WordpressAPIBundle": ""}
+    },
+    "target-dir": "BD/Bundle/WordpressAPIBundle/"
+}
