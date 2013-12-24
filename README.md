@@ -20,4 +20,5 @@ Add bdunogier/wordpressapibundle to your composer.json, and run composer update/
 - Blogger API: http://codex.wordpress.org/XML-RPC_Blogger_API
 - MovableType API: http://codex.wordpress.org/XML-RPC_MovableType_API
 - MetaWeblog API: http://codex.wordpress.org/XML-RPC_MetaWeblog_API
+- Wordpress API: http://codex.wordpress.org/XML-RPC_WordPress_API
 
