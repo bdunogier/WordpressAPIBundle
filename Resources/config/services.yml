@@ -25,6 +25,7 @@ services:
         class: %bd_wordpress_api.xml_rpc.param_processor.blogger.get_user_info.class%
         tags:
             - { name: bdxmlrpc.parameters_processor, methodName: blogger.getUserInfo }
+            - { name: bdxmlrpc.parameters_processor, methodName: wp.getProfile }
 
     bd_wordpress_api.xml_rpc.param_processor.blogger.get_post:
         class: %bd_wordpress_api.xml_rpc.param_processor.blogger.get_post.class%

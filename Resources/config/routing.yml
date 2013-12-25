@@ -6,7 +6,7 @@ wordpress_api.blogger.getUsersBlogs:
 wordpress_api.blogger.getUserInfo:
     path: /xmlrpc/blogger.getUserInfo
     defaults:
-        _controller: bd_wordpress_api.controller:getUserInfo
+        _controller: bd_wordpress_api.controller:getProfile
 
 wordpress_api.blogger.getPost:
     path: /xmlrpc/blogger.getPost/{postId}
@@ -87,4 +87,14 @@ wordpress_api.wp.getOptions:
     path: /xmlrpc/wp.getOptions
     defaults:
         _controller: bd_wordpress_api.controller.options:getOptions
+
+wordpress_api.wp.getProfile:
+    path: /xmlrpc/wp.getProfile
+    defaults:
+        _controller: bd_wordpress_api.controller:getProfile
+
+wordpress_api.wp.getComments:
+    path: /xmlrpc/wp.getComments
+    defaults:
+        _controller: bd_wordpress_api.controller:getComments
 

@@ -219,7 +219,7 @@ class DefaultController
         );
     }
 
-    public function getUserInfo( Request $request )
+    public function getProfile( Request $request )
     {
         $user = $this->userService->loadUserByCredentials(
             $request->request->get( 'username' ),
@@ -235,6 +235,11 @@ class DefaultController
                 'url' => '',
             )
         );
+    }
+
+    public function getComments()
+    {
+        return new Response( array() );
     }
 
     private function login( $username, $password )
