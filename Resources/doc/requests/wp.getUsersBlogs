@@ -1,13 +1,8 @@
 #!/bin/sh
 echo '<?xml version="1.0" encoding="utf-8"?>
 <methodCall>
- <methodName>blogger.getUsersBlogs</methodName>
+ <methodName>wp.getUsersBlogs</methodName>
  <params>
-  <param>
-   <value>
-    <string>0123456789ABCDEF</string>
-   </value>
-  </param>
   <param>
    <value>
     <string>admin</string>

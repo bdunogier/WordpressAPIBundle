@@ -9,6 +9,7 @@ parameters:
     bd_wordpress_api.xml_rpc.param_processor.mt.get_post_categories.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\MovableType\GetPostCategories
     bd_wordpress_api.xml_rpc.param_processor.mt.set_post_categories.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\MovableType\SetPostCategories
     bd_wordpress_api.xml_rpc.param_processor.mt.get_recent_post_titles.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\MovableType\GetRecentPostTitles
+    bd_wordpress_api.xml_rpc.param_processor.wp.get_options.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\Wordpress\GetOptions
 
 services:
     bd_wordpress_api.controller:
@@ -60,3 +61,8 @@ services:
         class: %bd_wordpress_api.xml_rpc.param_processor.mt.get_recent_post_titles.class%
         tags:
             - { name: bdxmlrpc.parameters_processor, methodName: mt.getRecentPostTitles }
+
+    bd_wordpress_api.xml_rpc.param_processor.wp.get_options:
+        class: %bd_wordpress_api.xml_rpc.param_processor.wp.get_options.class%
+        tags:
+            - { name: bdxmlrpc.parameters_processor, methodName: wp.getOptions }

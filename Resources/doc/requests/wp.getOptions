@@ -1,17 +1,13 @@
 #!/bin/sh
-echo '<?xml version="1.0" encoding="utf-8"?>
+echo '<?xml version="1.0" ?>
 <methodCall>
- <methodName>wp.getUsersBlogs</methodName>
- <params>
-  <param>
-   <value>
-    <string>admin</string>
-   </value>
-  </param>
-  <param>
-   <value>
-    <string>publish</string>
-   </value>
-  </param>
- </params>
+  <methodName>wp.getOptions</methodName>
+  <params>
+    <param><value><i4>1</i4></value></param>
+    <param><value><string>admin</string></value></param>
+    <param><value><string>publish</string></value></param>
+    <param><value><struct>
+      <member><name>software_version</name><value><string>software_version</string></value></member>
+    </struct></value></param>
+  </params>
 </methodCall>' | http -v POST "http://vm:88/xmlrpc.php" "Content-Type:text/xml"

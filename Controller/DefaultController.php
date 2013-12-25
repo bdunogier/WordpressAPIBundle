@@ -4,7 +4,6 @@ namespace BD\Bundle\WordpressAPIBundle\Controller;
 
 use eZ\Publish\API\Repository\ContentService;
 use eZ\Publish\API\Repository\ContentTypeService;
-use eZ\Publish\API\Repository\Exceptions\NotFoundException;
 use eZ\Publish\API\Repository\LocationService;
 use eZ\Publish\API\Repository\Repository;
 use eZ\Publish\API\Repository\SearchService;
@@ -44,7 +43,7 @@ class DefaultController
         $this->userService = $repository->getUserService();
     }
 
-    public function getUsersBlogAction()
+    public function getUsersBlogs()
     {
         return new Response(
             array(
@@ -213,7 +212,9 @@ class DefaultController
                 'metaWeblog.editpost',
                 'metaWeblog.deletePost',
                 'metaWeblog.getPost',
-                'metaWeblog.getCategories'
+                'metaWeblog.getCategories',
+                'system.listMethods',
+                'wp.getUsersBlogs'
             )
         );
     }
@@ -232,6 +233,19 @@ class DefaultController
                 'firstname' => (string)$user->getFieldValue( 'first_name' ),
                 'lastname' => (string)$user->getFieldValue( 'last_name' ),
                 'url' => '',
+            )
+        );
+    }
+
+    public function getOptions( Request $request )
+    {
+        return new Response(
+            array(
+                'software_version' => array(
+                    'desc' => 'Software version',
+                    'readonly' => true,
+                    'value' => "5.3-dev"
+                )
             )
         );
     }

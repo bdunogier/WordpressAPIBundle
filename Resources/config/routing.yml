@@ -1,7 +1,7 @@
-wordpress_api.blogger.getLatestContent:
+wordpress_api.blogger.getUsersBlogs:
     path: /xmlrpc/blogger.getUsersBlogs
     defaults:
-        _controller: bd_wordpress_api.controller:getUsersBlogAction
+        _controller: bd_wordpress_api.controller:getUsersBlogs
 
 wordpress_api.blogger.getUserInfo:
     path: /xmlrpc/blogger.getUserInfo
@@ -72,3 +72,19 @@ wordpress_api.metaWeblog.getCategories:
     path: /xmlrpc/metaWeblog.getCategories
     defaults:
         _controller: bd_wordpress_api.controller:getPostCategories
+
+wordpress_api.system.listMethods:
+    path: /xmlrpc/system.listMethods
+    defaults:
+        _controller: bd_wordpress_api.controller:getSupportedMethods
+
+wordpress_api.wp.getUsersBlogs:
+    path: /xmlrpc/wp.getUsersBlogs
+    defaults:
+        _controller: bd_wordpress_api.controller:getUsersBlogs
+
+wordpress_api.wp.getOptions:
+    path: /xmlrpc/wp.getOptions
+    defaults:
+        _controller: bd_wordpress_api.controller:getOptions
+
