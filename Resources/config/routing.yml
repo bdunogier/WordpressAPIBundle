@@ -98,3 +98,7 @@ wordpress_api.wp.getComments:
     defaults:
         _controller: bd_wordpress_api.controller:getComments
 
+wordpress_api.wp.getPostFormats:
+    path: /xmlrpc/wp.getPostFormats
+    defaults:
+        _controller: bd_wordpress_api.controller:getPostFormats

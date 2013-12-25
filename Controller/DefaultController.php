@@ -242,6 +242,15 @@ class DefaultController
         return new Response( array() );
     }
 
+    public function getPostFormats()
+    {
+        return new Response(
+            array(
+                'standard' => 'Standard'
+            )
+        );
+    }
+
     private function login( $username, $password )
     {
         $this->repository->setCurrentUser(
