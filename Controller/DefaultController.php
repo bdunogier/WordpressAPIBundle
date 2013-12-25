@@ -237,19 +237,6 @@ class DefaultController
         );
     }
 
-    public function getOptions( Request $request )
-    {
-        return new Response(
-            array(
-                'software_version' => array(
-                    'desc' => 'Software version',
-                    'readonly' => true,
-                    'value' => "5.3-dev"
-                )
-            )
-        );
-    }
-
     private function login( $username, $password )
     {
         $this->repository->setCurrentUser(
