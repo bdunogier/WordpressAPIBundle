@@ -13,6 +13,11 @@ wordpress_api.blogger.getPost:
     defaults:
         _controller: bd_wordpress_api.controller:getPost
 
+wordpress_api.blogger.deletePost:
+    path: /xmlrpc/blogger.deletePost/{postId}
+    defaults:
+        _controller: bd_wordpress_api.controller:deletePost
+
 wordpress_api.mt.getRecentPostTitles:
     path: /xmlrpc/mt.getRecentPostTitles
     defaults:
