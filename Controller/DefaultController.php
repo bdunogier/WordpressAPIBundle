@@ -8,6 +8,7 @@ use eZ\Publish\API\Repository\LocationService;
 use eZ\Publish\API\Repository\Repository;
 use eZ\Publish\API\Repository\SearchService;
 use eZ\Publish\API\Repository\UserService;
+use eZ\Publish\API\Repository\Values\Content\Content;
 use eZ\Publish\API\Repository\Values\Content\Query;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use BD\Bundle\XmlRpcBundle\XmlRpc\Response;
@@ -90,13 +91,7 @@ class DefaultController
         {
             /** @var \eZ\Publish\Core\Repository\Values\Content\Content $content */
             $content = $searchHit->valueObject;
-            $recentPosts[] = array(
-                'postid' => $content->id,
-                'title' => $content->contentInfo->name,
-                'dateCreated' => 0,
-                'date_created_gmt' => 0,
-                'post_status' => 0,
-            );
+            $recentPosts[] = $this->serializeContentAsPost( $searchHit->valueObject );
         }
 
         return new Response( $recentPosts );
@@ -179,21 +174,7 @@ class DefaultController
     {
         $content = $this->contentService->loadContent( $postId );
 
-        return new Response(
-            array(
-                'postid' => $content->id,
-                'title' => (string)$content->fields['title']['eng-GB'],
-                'description' => '',
-                'link' => '',
-                'userId' => $content->contentInfo->ownerId,
-                'dateCreated' => 0,
-                'date_created_gmt' => 0,
-                'date_modified' => 0,
-                'date_modified_gmt' => 0,
-                'wp_post_thumbnail' => 0,
-                'categories' => array(),
-            )
-        );
+        return new Response( $this->serializeContentAsPost( $content ) );
     }
 
     public function getSupportedMethods()
@@ -214,7 +195,9 @@ class DefaultController
                 'metaWeblog.getPost',
                 'metaWeblog.getCategories',
                 'system.listMethods',
-                'wp.getUsersBlogs'
+                'wp.getUsersBlogs',
+                'wp.getOptions',
+                'wp.getProfile'
             )
         );
     }
@@ -248,6 +231,24 @@ class DefaultController
             array(
                 'standard' => 'Standard'
             )
+        );
+    }
+
+    protected function serializeContentAsPost( Content $content )
+    {
+        return array(
+            'post_id' => $content->id,
+            'post_title' => (string)$content->fields['title']['eng-GB'],
+            'post_date' => $content->versionInfo->creationDate,
+            'description' => '',
+            'link' => '',
+            'userId' => $content->contentInfo->ownerId,
+            'dateCreated' => $content->versionInfo->creationDate,
+            'date_created_gmt' => $content->versionInfo->creationDate,
+            'date_modified' => $content->versionInfo->modificationDate,
+            'date_modified_gmt' => $content->versionInfo->modificationDate,
+            'wp_post_thumbnail' => 0,
+            'categories' => array(),
         );
     }
 

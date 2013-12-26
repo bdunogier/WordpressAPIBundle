@@ -33,7 +33,7 @@ class Options
                 $options = array(
                     'desc' => 'Software version',
                     'readonly' => true,
-                    'value' => "5.3-dev"
+                    'value' => "3.4"
                 );
                 break;
 

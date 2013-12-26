@@ -46,7 +46,7 @@ wordpress_api.metaWeblog.getCategories:
 wordpress_api.metaWeblog.getRecentPosts:
     path: /xmlrpc/metaWeblog.getRecentPosts
     defaults:
-        _controller: bd_wordpress_api.controller:getRecentPosts
+        _controller: bd_wordpress_api.controller.metaweblog:getRecentPosts
 
 wordpress_api.metaWeblog.newPost:
     path: /xmlrpc/metaWeblog.newPost
