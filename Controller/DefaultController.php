@@ -2,6 +2,7 @@
 
 namespace BD\Bundle\WordpressAPIBundle\Controller;
 
+use BD\Bundle\WordpressAPIBundle\Service\Category as CategoryService;
 use eZ\Publish\API\Repository\ContentService;
 use eZ\Publish\API\Repository\ContentTypeService;
 use eZ\Publish\API\Repository\LocationService;
@@ -34,9 +35,14 @@ class DefaultController
     /** @var UserService */
     protected $userService;
 
-    public function __construct( Repository $repository )
+    /** @var Category */
+    protected $categoryService;
+
+    public function __construct( Repository $repository, CategoryService $categoryService )
     {
         $this->repository = $repository;
+        $this->categoryService = $categoryService;
+
         $this->searchService = $repository->getSearchService();
         $this->contentService = $repository->getContentService();
         $this->locationService = $repository->getLocationService();
@@ -63,18 +69,7 @@ class DefaultController
     {
         return new Response(
             array(
-                array(
-                    'categoryId' => 333,
-                    'categoryName' => 'General'
-                ),
-                array(
-                    'categoryId' => 334,
-                    'categoryName' => 'XML-RPC'
-                ),
-                array(
-                    'categoryId' => 336,
-                    'categoryName' => 'Testing'
-                )
+                $this->categoryService->getList()
             )
         );
     }
@@ -89,8 +84,6 @@ class DefaultController
         $recentPosts = array();
         foreach ( $results->searchHits as $searchHit )
         {
-            /** @var \eZ\Publish\Core\Repository\Values\Content\Content $content */
-            $content = $searchHit->valueObject;
             $recentPosts[] = $this->serializeContentAsPost( $searchHit->valueObject );
         }
 
@@ -156,7 +149,7 @@ class DefaultController
         return new Response( $categories );
     }
 
-    public function editPost( Request $request )
+    public function editPost()
     {
         return new Response( true );
     }

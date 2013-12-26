@@ -8,8 +8,11 @@
  */
 namespace BD\Bundle\WordpressAPIBundle\Service;
 
-class Category
+interface Category
 {
-
+    /**
+     * Returns the categories list
+     * @return array array of hashes. Hash keys: categoryId, categoryName
+     */
+    public function getList();
 }
- 

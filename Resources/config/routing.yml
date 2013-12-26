@@ -73,8 +73,8 @@ wordpress_api.metaWeblog.getPost:
     defaults:
         _controller: bd_wordpress_api.controller:getPost
 
-wordpress_api.metaWeblog.getCategories:
-    path: /xmlrpc/metaWeblog.getCategories
+wordpress_api.metaWeblog.getPostCategories:
+    path: /xmlrpc/metaWeblog.getPostCategories
     defaults:
         _controller: bd_wordpress_api.controller:getPostCategories
 
