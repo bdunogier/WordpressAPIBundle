@@ -15,4 +15,11 @@ interface Category
      * @return array array of hashes. Hash keys: categoryId, categoryName
      */
     public function getList();
+
+    /**
+     * Returns the categories of a post
+     * @param mixed $post
+     * @return array Returns the categories of a content
+     */
+    public function getPostCategories( $postId );
 }

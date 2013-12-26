@@ -8,6 +8,7 @@
  */
 namespace BD\Bundle\WordpressAPIBundle\Controller;
 
+use BD\Bundle\WordpressAPIBundle\Service\Category as CategoryService;
 use eZ\Publish\API\Repository\Repository;
 use eZ\Publish\API\Repository\SearchService;
 use eZ\Publish\API\Repository\Values\Content\Content;
@@ -23,11 +24,16 @@ class MetaWeblog
     /** @var SearchService */
     protected $searchService;
 
-    public function __construct( Repository $repository )
+    /** @var Category */
+    protected $categoryService;
+
+    public function __construct( Repository $repository, CategoryService $categoryService )
     {
         $this->repository = $repository;
         $this->searchService = $repository->getSearchService();
+        $this->categoryService = $categoryService;
     }
+
     public function getRecentPosts( Request $request )
     {
         $query = new Query();
@@ -47,6 +53,12 @@ class MetaWeblog
 
     protected function serializeContentAsPost( Content $content )
     {
+        $categories = array();
+        foreach ( $this->categoryService->getPostCategories( $content->id ) as $category )
+        {
+            $categories[] = $category['categoryName'];
+        }
+
         return array(
             'dateCreated' => $content->versionInfo->creationDate,
             'userid' => $content->contentInfo->ownerId,
@@ -55,7 +67,7 @@ class MetaWeblog
             'title' => (string)$content->fields['title']['eng-GB'],
             'link' => 'http://vm:88/',
             'permaLink' => 'http://vm:88/',
-            'categories' => array( 'uncategorized' ),
+            'categories' => $categories,
             'mt_excerpt' => '',
             'mt_text_more' => '',
             'wp_more_text' => '',

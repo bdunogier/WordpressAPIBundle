@@ -107,3 +107,8 @@ wordpress_api.wp.getPostFormats:
     path: /xmlrpc/wp.getPostFormats
     defaults:
         _controller: bd_wordpress_api.controller:getPostFormats
+
+wordpress_api.wp.getCategories:
+    path: /xmlrpc/wp.getCategories
+    defaults:
+        _controller: bd_wordpress_api.controller.wordpress:getCategories

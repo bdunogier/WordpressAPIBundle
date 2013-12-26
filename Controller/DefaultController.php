@@ -67,11 +67,7 @@ class DefaultController
 
     public function getCategoryList()
     {
-        return new Response(
-            array(
-                $this->categoryService->getList()
-            )
-        );
+        return new Response( $this->categoryService->getList() );
     }
 
     public function getRecentPosts( Request $request )
@@ -129,24 +125,7 @@ class DefaultController
 
     public function getPostCategories( $postId )
     {
-        $contentInfo = $this->contentService->loadContentInfo( $postId );
-        $locations = $this->locationService->loadLocations( $contentInfo );
-
-        $categories = array();
-        foreach ( $locations as $location )
-        {
-            $parent = $this->locationService->loadLocation( $location->parentLocationId );
-            $categories[] = array(
-                'categoryId' => $parent->id,
-                'categoryName' => $parent->contentInfo->name,
-                'isPrimary' => ( $location->id === $contentInfo->mainLocationId ),
-                'parentId' => $parent->parentLocationId,
-                'htmlUrl' => '',
-                'rssurl' => '',
-            );
-        }
-
-        return new Response( $categories );
+        return new Response( $this->categoryService->getPostCategories( $postId ) );
     }
 
     public function editPost()
