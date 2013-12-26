@@ -9,8 +9,8 @@
         }
     ],
     "require": {
-        "bdunogier/xmlrpcbundle": "@dev",
-        "ezsystems/ezpublish-kernel": "@dev"
+        "bdunogier/xmlrpcbundle": "dev-master",
+        "ezsystems/ezpublish-kernel": "dev-master"
     },
     "minimum-stability": "dev",
     "autoload": {
