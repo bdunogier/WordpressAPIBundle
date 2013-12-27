@@ -3,6 +3,7 @@
 namespace BD\Bundle\WordpressAPIBundle\Controller;
 
 use BD\Bundle\WordpressAPIBundle\Service\Category as CategoryService;
+use BD\Bundle\WordpressAPIBundle\Service\Post as PostService;
 use eZ\Publish\API\Repository\ContentService;
 use eZ\Publish\API\Repository\ContentTypeService;
 use eZ\Publish\API\Repository\LocationService;
@@ -35,13 +36,17 @@ class DefaultController
     /** @var UserService */
     protected $userService;
 
-    /** @var Category */
+    /** @var CategoryService */
     protected $categoryService;
 
-    public function __construct( Repository $repository, CategoryService $categoryService )
+    /** @var PostService */
+    protected $postService;
+
+    public function __construct( Repository $repository, CategoryService $categoryService, PostService $postService )
     {
         $this->repository = $repository;
         $this->categoryService = $categoryService;
+        $this->postService = $postService;
 
         $this->searchService = $repository->getSearchService();
         $this->contentService = $repository->getContentService();
@@ -72,39 +77,25 @@ class DefaultController
 
     public function getRecentPosts( Request $request )
     {
-        $query = new Query();
-        $query->criterion = new Query\Criterion\ContentTypeIdentifier( 'blog_post' );
-        $query->limit = $request->request->has( 'limit' ) ? $request->request->get( 'limit' ) : 5;
-
-        $results = $this->searchService->findContent( $query );
-        $recentPosts = array();
-        foreach ( $results->searchHits as $searchHit )
-        {
-            $recentPosts[] = $this->serializeContentAsPost( $searchHit->valueObject );
-        }
-
-        return new Response( $recentPosts );
+        return new Response(
+            $this->postService->findRecentPosts(
+                $request->request->has( 'limit' ) ? $request->request->get( 'limit' ) : 5
+            )
+        );
     }
 
     public function newPost( Request $request )
     {
         $this->login( $request->request->get( 'username' ), $request->request->get( 'password' ) );
-
-        $createStruct = $this->contentService->newContentCreateStruct(
-            $this->contentTypeService->loadContentTypeByIdentifier( 'blog_post' ),
-            'eng-GB'
-        );
         $postData = $request->request->get( 'content' );
-        $createStruct->setField( 'title', $postData['title'] );
 
-        $draft = $this->contentService->createContent(
-            $createStruct,
-            array( $this->locationService->newLocationCreateStruct( 2 ) )
+        return new Response(
+            $this->postService->createPost(
+                $postData['title'],
+                $postData['description'],
+                $postData['categories']
+            )
         );
-
-        $content = $this->contentService->publishVersion( $draft->versionInfo );
-
-        return new Response( $content->id );
     }
 
     public function setPostCategories( $postId, Request $request )

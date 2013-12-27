@@ -22,6 +22,7 @@ services:
         arguments:
             - @ezpublish.api.repository
             - @bd_wordpress_api.service.category
+            - @bd_wordpress_api.service.post
 
     bd_wordpress_api.controller.options:
         class: %bd_wordpress_api.controller.options.class%
