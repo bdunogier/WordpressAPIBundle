@@ -8,7 +8,7 @@
  */
 namespace BD\Bundle\WordpressAPIBundle\Controller;
 
-use BD\Bundle\WordpressAPIBundle\Service\Category as CategoryService;
+use BD\Bundle\WordpressAPIBundle\Service\CategoryServiceInterface;
 use eZ\Publish\API\Repository\Repository;
 use eZ\Publish\API\Repository\SearchService;
 use eZ\Publish\API\Repository\Values\Content\Content;
@@ -27,7 +27,7 @@ class MetaWeblog
     /** @var Category */
     protected $categoryService;
 
-    public function __construct( Repository $repository, CategoryService $categoryService )
+    public function __construct( Repository $repository, CategoryServiceInterface $categoryService )
     {
         $this->repository = $repository;
         $this->searchService = $repository->getSearchService();

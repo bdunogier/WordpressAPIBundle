@@ -2,8 +2,8 @@
 
 namespace BD\Bundle\WordpressAPIBundle\Controller;
 
-use BD\Bundle\WordpressAPIBundle\Service\Category as CategoryService;
-use BD\Bundle\WordpressAPIBundle\Service\Post as PostService;
+use BD\Bundle\WordpressAPIBundle\Service\CategoryServiceInterface;
+use BD\Bundle\WordpressAPIBundle\Service\PostServiceInterface;
 use eZ\Publish\API\Repository\ContentService;
 use eZ\Publish\API\Repository\ContentTypeService;
 use eZ\Publish\API\Repository\LocationService;
@@ -36,13 +36,13 @@ class DefaultController
     /** @var UserService */
     protected $userService;
 
-    /** @var CategoryService */
+    /** @var CategoryServiceInterface */
     protected $categoryService;
 
-    /** @var PostService */
+    /** @var PostServiceInterface */
     protected $postService;
 
-    public function __construct( Repository $repository, CategoryService $categoryService, PostService $postService )
+    public function __construct( Repository $repository, CategoryServiceInterface $categoryService, PostServiceInterface $postService )
     {
         $this->repository = $repository;
         $this->categoryService = $categoryService;

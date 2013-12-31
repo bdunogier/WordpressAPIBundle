@@ -8,16 +8,16 @@
  */
 namespace BD\Bundle\WordpressAPIBundle\Controller;
 
-use BD\Bundle\WordpressAPIBundle\Service\Media as MediaService;
+use BD\Bundle\WordpressAPIBundle\Service\MediaServiceInterface;
 use BD\Bundle\XmlRpcBundle\XmlRpc\Response;
 use Symfony\Component\HttpFoundation\Request;
 
 class Media
 {
-    /** @var MediaService */
+    /** @var MediaServiceInterface */
     protected $mediaService;
 
-    public function __construct( MediaService $mediaService )
+    public function __construct( MediaServiceInterface $mediaService )
     {
         $this->mediaService = $mediaService;
     }

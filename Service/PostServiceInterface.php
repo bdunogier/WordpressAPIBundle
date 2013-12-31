@@ -9,7 +9,7 @@
 namespace BD\Bundle\WordpressAPIBundle\Service;
 
 
-interface Post
+interface PostServiceInterface
 {
     /**
      * Creates a new post

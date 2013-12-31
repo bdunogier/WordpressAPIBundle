@@ -8,7 +8,7 @@
  */
 namespace BD\Bundle\WordpressAPIBundle\Service;
 
-interface Media
+interface MediaServiceInterface
 {
     public function getMedia( $id );
 

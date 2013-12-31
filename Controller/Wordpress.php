@@ -8,12 +8,15 @@
  */
 namespace BD\Bundle\WordpressAPIBundle\Controller;
 
-use BD\Bundle\EzWordpressAPIBundle\WordpressAPI\CategoryService;
+use BD\Bundle\WordpressAPIBundle\Service\CategoryServiceInterface;
 use BD\Bundle\XmlRpcBundle\XmlRpc\Response;
 
 class Wordpress
 {
-    public function __construct( CategoryService $categoryService )
+    /** @var CategoryServiceInterface */
+    protected $categoryService;
+
+    public function __construct( CategoryServiceInterface $categoryService )
     {
         $this->categoryService = $categoryService;
     }

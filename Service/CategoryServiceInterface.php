@@ -8,7 +8,7 @@
  */
 namespace BD\Bundle\WordpressAPIBundle\Service;
 
-interface Category
+interface CategoryServiceInterface
 {
     /**
      * Returns the categories list
