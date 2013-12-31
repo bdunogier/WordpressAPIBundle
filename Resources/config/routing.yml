@@ -112,3 +112,18 @@ wordpress_api.wp.getCategories:
     path: /xmlrpc/wp.getCategories
     defaults:
         _controller: bd_wordpress_api.controller.wordpress:getCategories
+
+wordpress_api.wp.getMediaItem:
+    path: /xmlrpc/wp.getMediaItem/{mediaItemId}
+    defaults:
+        _controller: bd_wordpress_api.controller.media:getMediaItem
+
+wordpress_api.wp.getMediaLibrary:
+    path: /xmlrpc/wp.getMediaLibrary
+    defaults:
+        _controller: bd_wordpress_api.controller.media:getMediaLibrary
+
+wordpress_api.wp.uploadFile:
+    path: /xmlrpc/wp.uploadFile
+    defaults:
+        _controller: bd_wordpress_api.controller.media:uploadFile

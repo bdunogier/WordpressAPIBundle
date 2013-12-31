@@ -3,6 +3,7 @@ parameters:
     bd_wordpress_api.controller.options.class: BD\Bundle\WordpressAPIBundle\Controller\Options
     bd_wordpress_api.controller.metaweblog.class: BD\Bundle\WordpressAPIBundle\Controller\MetaWeblog
     bd_wordpress_api.controller.wordpress.class: BD\Bundle\WordpressAPIBundle\Controller\Wordpress
+    bd_wordpress_api.controller.media.class: BD\Bundle\WordpressAPIBundle\Controller\Media
 
     bd_wordpress_api.xml_rpc.param_processor.blogger.get_user_info.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\Blogger\GetUserInfo
     bd_wordpress_api.xml_rpc.param_processor.blogger.get_post.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\Blogger\GetPost
@@ -15,6 +16,8 @@ parameters:
     bd_wordpress_api.xml_rpc.param_processor.mt.set_post_categories.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\MovableType\SetPostCategories
     bd_wordpress_api.xml_rpc.param_processor.mt.get_recent_post_titles.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\MovableType\GetRecentPostTitles
     bd_wordpress_api.xml_rpc.param_processor.wp.get_options.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\Wordpress\GetOptions
+    bd_wordpress_api.xml_rpc.param_processor.wp.get_media_library.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\Wordpress\GetMediaLibrary
+    bd_wordpress_api.xml_rpc.param_processor.wp.get_media_item.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\Wordpress\GetMediaItem
 
 services:
     bd_wordpress_api.controller:
@@ -37,6 +40,11 @@ services:
         arguments:
             - @ezpublish.api.repository
             - @bd_wordpress_api.service.category
+
+    bd_wordpress_api.controller.media:
+        class: %bd_wordpress_api.controller.media.class%
+        arguments:
+            - @bd_wordpress_api.service.media
 
     bd_wordpress_api.xml_rpc.param_processor.blogger.get_user_info:
         class: %bd_wordpress_api.xml_rpc.param_processor.blogger.get_user_info.class%
@@ -93,3 +101,13 @@ services:
         class: %bd_wordpress_api.xml_rpc.param_processor.wp.get_options.class%
         tags:
             - { name: bdxmlrpc.parameters_processor, methodName: wp.getOptions }
+
+    bd_wordpress_api.xml_rpc.param_processor.wp.get_media_library:
+        class: %bd_wordpress_api.xml_rpc.param_processor.wp.get_media_library.class%
+        tags:
+            - { name: bdxmlrpc.parameters_processor, methodName: wp.getMediaLibrary }
+
+    bd_wordpress_api.xml_rpc.param_processor.wp.get_media_item:
+        class: %bd_wordpress_api.xml_rpc.param_processor.wp.get_media_item.class%
+        tags:
+            - { name: bdxmlrpc.parameters_processor, methodName: wp.getMediaItem }

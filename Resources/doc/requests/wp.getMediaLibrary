@@ -1,0 +1,40 @@
+#!/bin/sh
+echo '<?xml version="1.0" encoding="utf-8"?>
+<methodCall>
+	<methodName>wp.getMediaLibrary</methodName>
+	<params>
+		<param>
+			<value>
+				<i4>1</i4>
+			</value>
+		</param>
+		<param>
+			<value>
+				<string>admin</string>
+			</value>
+		</param>
+		<param>
+			<value>
+				<string>publish</string>
+			</value>
+		</param>
+		<param>
+			<value>
+				<struct>
+					<member>
+						<name>offset</name>
+						<value>
+							<i4>0</i4>
+						</value>
+					</member>
+					<member>
+						<name>number</name>
+						<value>
+							<i4>50</i4>
+						</value>
+					</member>
+				</struct>
+			</value>
+		</param>
+	</params>
+</methodCall>' | http -v POST "http://vm:88/xmlrpc.php" "Content-Type:text/xml"

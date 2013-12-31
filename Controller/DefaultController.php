@@ -160,7 +160,10 @@ class DefaultController
                 'system.listMethods',
                 'wp.getUsersBlogs',
                 'wp.getOptions',
-                'wp.getProfile'
+                'wp.getProfile',
+                'wp.getMediaLibrary',
+                'wp.getMediaItem',
+                'wp.uploadFile'
             )
         );
     }
