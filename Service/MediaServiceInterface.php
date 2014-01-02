@@ -20,5 +20,13 @@ interface MediaServiceInterface
      */
     public function getMediaList( $offset, $limit );
 
-    public function uploadFile();
+    /**
+     * Creates an image file
+     * @param string $name Image name
+     * @param string $contents Image file contents
+     * @param bool $overwrite
+     * @param int $contentId
+     * @return array An array with the following keys: id, file, url and type
+     */
+    public function createImage( $name, $contents, $overwrite, $contentId = 0 );
 }

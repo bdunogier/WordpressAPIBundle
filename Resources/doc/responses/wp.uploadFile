@@ -1,0 +1,34 @@
+<methodResponse>
+	<params>
+		<param>
+			<value>
+				<struct>
+					<member>
+						<name>id</name>
+						<value>
+							<string>6</string>
+						</value>
+					</member>
+					<member>
+						<name>file</name>
+						<value>
+							<string>wpid-IMG_20131201_204201.jpg</string>
+						</value>
+					</member>
+					<member>
+						<name>url</name>
+						<value>
+							<string>http://vm/wordpress/wp-content/uploads/2014/01/wpid-IMG_20131201_204201.jpg</string>
+						</value>
+					</member>
+					<member>
+						<name>type</name>
+						<value>
+							<string>image/jpeg</string>
+						</value>
+					</member>
+				</struct>
+			</value>
+		</param>
+	</params>
+</methodResponse>

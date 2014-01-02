@@ -18,6 +18,7 @@ parameters:
     bd_wordpress_api.xml_rpc.param_processor.wp.get_options.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\Wordpress\GetOptions
     bd_wordpress_api.xml_rpc.param_processor.wp.get_media_library.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\Wordpress\GetMediaLibrary
     bd_wordpress_api.xml_rpc.param_processor.wp.get_media_item.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\Wordpress\GetMediaItem
+    bd_wordpress_api.xml_rpc.param_processor.wp.upload_media_file.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\Wordpress\UploadMediaFile
 
 services:
     bd_wordpress_api.controller:
@@ -111,3 +112,8 @@ services:
         class: %bd_wordpress_api.xml_rpc.param_processor.wp.get_media_item.class%
         tags:
             - { name: bdxmlrpc.parameters_processor, methodName: wp.getMediaItem }
+
+    bd_wordpress_api.xml_rpc.param_processor.wp.upload_media_file:
+        class: %bd_wordpress_api.xml_rpc.param_processor.wp.upload_media_file.class%
+        tags:
+            - { name: bdxmlrpc.parameters_processor, methodName: wp.uploadFile }

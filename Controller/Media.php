@@ -39,6 +39,15 @@ class Media
 
     public function uploadFile( Request $request )
     {
+        $data = $request->request->get( 'data' );
 
+        return new Response(
+            $this->mediaService->createImage(
+                $data['name'],
+                $data['bits'],
+                (bool)$data['overwrite'],
+                (bool)$data['post_id']
+            )
+        );
     }
 }
