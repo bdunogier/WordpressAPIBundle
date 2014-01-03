@@ -43,6 +43,7 @@ At this time, this bundle supports the following API methods:
 - wp.getMediaLibrary
 - wp.getMediaItem
 - wp.deletePost
+- wp.getPost
 
 Some of them have hardcoded values, other return empty values...
 
