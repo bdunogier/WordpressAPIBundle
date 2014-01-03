@@ -14,6 +14,7 @@ parameters:
     bd_wordpress_api.xml_rpc.param_processor.wp.get_media_item.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\Wordpress\GetMediaItem
     bd_wordpress_api.xml_rpc.param_processor.wp.upload_media_file.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\Wordpress\UploadMediaFile
     bd_wordpress_api.xml_rpc.param_processor.wp.delete_post.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\Wordpress\DeletePost
+    bd_wordpress_api.xml_rpc.param_processor.wp.get_post.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\Wordpress\GetPost
 
 services:
     bd_wordpress_api.xml_rpc.param_processor.blogger.get_user_info:
@@ -91,3 +92,8 @@ services:
         class: %bd_wordpress_api.xml_rpc.param_processor.wp.delete_post.class%
         tags:
             - { name: bdxmlrpc.parameters_processor, methodName: wp.deletePost }
+
+    bd_wordpress_api.xml_rpc.param_processor.wp.get_post:
+        class: %bd_wordpress_api.xml_rpc.param_processor.wp.get_post.class%
+        tags:
+            - { name: bdxmlrpc.parameters_processor, methodName: wp.getPost }
