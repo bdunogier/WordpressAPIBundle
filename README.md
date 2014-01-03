@@ -39,6 +39,10 @@ At this time, this bundle supports the following API methods:
 - wp.getProfile
 - wp.getComments
 - wp.getPostFormats
+- wp.uploadFile
+- wp.getMediaLibrary
+- wp.getMediaItem
+- wp.deletePost
 
 Some of them have hardcoded values, other return empty values...
 
