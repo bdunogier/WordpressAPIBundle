@@ -23,7 +23,7 @@ class UploadMediaFile implements ParametersProcessorInterface
             'blog_id' => $parameters[0],
             'username' => $parameters[1],
             'password' => $parameters[2],
-            'data' => $parameters[3]
+            'data' => $parameters[3],
         );
     }
 }

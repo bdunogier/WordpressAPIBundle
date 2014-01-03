@@ -22,9 +22,11 @@ class Media
         $this->mediaService = $mediaService;
     }
 
-    public function getMediaItem( $mediaId, Request $request )
+    public function getMediaItem( $mediaItemId, Request $request )
     {
-
+        return new Response(
+            $this->mediaService->getMedia( $mediaItemId )
+        );
     }
 
     public function getMediaLibrary( Request $request )
@@ -45,8 +47,9 @@ class Media
             $this->mediaService->createImage(
                 $data['name'],
                 $data['bits'],
+                $data['type'],
                 (bool)$data['overwrite'],
-                (bool)$data['post_id']
+                isset( $data['post_id'] ) ? (int)$data['post_id'] : false
             )
         );
     }

@@ -24,9 +24,10 @@ interface MediaServiceInterface
      * Creates an image file
      * @param string $name Image name
      * @param string $contents Image file contents
+     * @param string $type mime type
      * @param bool $overwrite
      * @param int $contentId
      * @return array An array with the following keys: id, file, url and type
      */
-    public function createImage( $name, $contents, $overwrite, $contentId = 0 );
+    public function createImage( $name, $contents, $type, $overwrite, $contentId = 0 );
 }
