@@ -9,20 +9,8 @@
 namespace BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\Blogger;
 
 use BD\Bundle\XmlRpcBundle\XmlRpc\ParametersProcessorInterface;
+use BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\Common\DeletePost as CommonDeletePost;
 
-class DeletePost implements ParametersProcessorInterface
+class DeletePost extends CommonDeletePost implements ParametersProcessorInterface
 {
-    public function getRoutePathArguments( $parameters )
-    {
-        return array( $parameters[1] );
-    }
-
-    public function getParameters( $parameters )
-    {
-        return array(
-            'appkey'   => $parameters[0],
-            'username' => $parameters[2],
-            'password' => $parameters[3],
-        );
-    }
 }
