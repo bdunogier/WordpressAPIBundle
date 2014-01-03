@@ -21,7 +21,7 @@ wordpress_api.blogger.deletePost:
 wordpress_api.mt.getRecentPostTitles:
     path: /xmlrpc/mt.getRecentPostTitles
     defaults:
-        _controller: bd_wordpress_api.controller.posts:getRecentPosts
+        _controller: bd_wordpress_api.controller.post:getRecentPosts
 
 wordpress_api.mt.getCategoryList:
     path: /xmlrpc/mt.getCategoryList

@@ -2,6 +2,7 @@ parameters:
     bd_wordpress_api.response_decorator.blogger.getPost.class: BD\Bundle\WordpressAPIBundle\ResponseDecorator\Blogger\GetPost
     bd_wordpress_api.response_decorator.metaweblog.getPost.class: BD\Bundle\WordpressAPIBundle\ResponseDecorator\MetaWeblog\GetPost
     bd_wordpress_api.response_decorator.metaweblog.getRecentPosts.class: BD\Bundle\WordpressAPIBundle\ResponseDecorator\MetaWeblog\GetRecentPosts
+    bd_wordpress_api.response_decorator.mt.getRecentPostTitles.class: BD\Bundle\WordpressAPIBundle\ResponseDecorator\MovableType\GetRecentPostTitles
 
 services:
     bd_wordpress_api.response_decorator.blogger.getPost:
@@ -20,3 +21,8 @@ services:
             - @bd_wordpress_api.response_decorator.metaweblog.getpost
         tags:
             - { name: bd_wordpress_api.response_decorator, methodName: metaWeblog.getRecentPosts }
+
+    bd_wordpress_api.response_decorator.mt.getRecentPostTitles:
+        class: %bd_wordpress_api.response_decorator.mt.getRecentPostTitles.class%
+        tags:
+            - { name: bd_wordpress_api.response_decorator, methodName: mt.getRecentPostTitles }
