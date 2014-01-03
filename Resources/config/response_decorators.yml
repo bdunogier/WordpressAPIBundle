@@ -1,0 +1,22 @@
+parameters:
+    bd_wordpress_api.response_decorator.blogger.getPost.class: BD\Bundle\WordpressAPIBundle\ResponseDecorator\Blogger\GetPost
+    bd_wordpress_api.response_decorator.metaweblog.getPost.class: BD\Bundle\WordpressAPIBundle\ResponseDecorator\MetaWeblog\GetPost
+    bd_wordpress_api.response_decorator.metaweblog.getRecentPosts.class: BD\Bundle\WordpressAPIBundle\ResponseDecorator\MetaWeblog\GetRecentPosts
+
+services:
+    bd_wordpress_api.response_decorator.blogger.getPost:
+        class: %bd_wordpress_api.response_decorator.blogger.getPost.class%
+        tags:
+            - { name: bd_wordpress_api.response_decorator, methodName: blogger.getPost }
+
+    bd_wordpress_api.response_decorator.metaweblog.getPost:
+        class: %bd_wordpress_api.response_decorator.metaweblog.getPost.class%
+        tags:
+            - { name: bd_wordpress_api.response_decorator, methodName: metaWeblog.getPost }
+
+    bd_wordpress_api.response_decorator.metaweblog.getRecentPosts:
+        class: %bd_wordpress_api.response_decorator.metaweblog.getRecentPosts.class%
+        arguments:
+            - @bd_wordpress_api.response_decorator.metaweblog.getpost
+        tags:
+            - { name: bd_wordpress_api.response_decorator, methodName: metaWeblog.getRecentPosts }

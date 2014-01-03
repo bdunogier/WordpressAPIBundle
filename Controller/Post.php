@@ -8,6 +8,7 @@
  */
 namespace BD\Bundle\WordpressAPIBundle\Controller;
 
+use BD\Bundle\WordpressAPIBundle\ResponseDecorator\ResponseDecoratorDispatcherInterface;
 use BD\Bundle\WordpressAPIBundle\Service\PostServiceInterface;
 use Symfony\Component\HttpFoundation\Request;
 use BD\Bundle\XmlRpcBundle\XmlRpc\Response;
@@ -17,14 +18,47 @@ class Post
     /** @var PostServiceInterface */
     protected $postService;
 
-    public function __construct( PostServiceInterface $postService )
+    /** @var ResponseDecoratorDispatcherInterface */
+    private $responseDecoratorDispatcher;
+
+    public function __construct( PostServiceInterface $postService, ResponseDecoratorDispatcherInterface $dispatcher )
     {
         $this->postService = $postService;
+        $this->responseDecoratorDispatcher = $dispatcher;
     }
 
     public function deletePost( $postId )
     {
         $this->postService->deletePost( $postId );
         return new Response( true );
+    }
+
+    public function getRecentPosts( Request $request )
+    {
+        $posts = $this->postService->findRecentPosts(
+            $request->request->has( 'limit' ) ? $request->request->get( 'limit' ) : 5
+        );
+
+        return new Response(
+            $this->responseDecoratorDispatcher->decorate(
+                $posts,
+                $request->attributes->get( 'xmlrpc_methodName' )
+            )
+        );
+    }
+
+    public function editPost()
+    {
+        return new Response( true );
+    }
+
+    public function getPost( $postId, Request $request )
+    {
+        return new Response(
+            $this->responseDecoratorDispatcher->decorate(
+                $this->postService->getPost( $postId ),
+                $request->attributes->get( 'xmlrpc_methodName' )
+            )
+        );
     }
 }

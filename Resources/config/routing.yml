@@ -1,7 +1,7 @@
 wordpress_api.blogger.getUsersBlogs:
     path: /xmlrpc/blogger.getUsersBlogs
     defaults:
-        _controller: bd_wordpress_api.controller:getUsersBlogs
+        _controller: bd_wordpress_api.controller.users:getUsersBlogs
 
 wordpress_api.blogger.getUserInfo:
     path: /xmlrpc/blogger.getUserInfo
@@ -11,7 +11,7 @@ wordpress_api.blogger.getUserInfo:
 wordpress_api.blogger.getPost:
     path: /xmlrpc/blogger.getPost/{postId}
     defaults:
-        _controller: bd_wordpress_api.controller:getPost
+        _controller: bd_wordpress_api.controller.post:getPost
 
 wordpress_api.blogger.deletePost:
     path: /xmlrpc/blogger.deletePost/{postId}
@@ -21,7 +21,7 @@ wordpress_api.blogger.deletePost:
 wordpress_api.mt.getRecentPostTitles:
     path: /xmlrpc/mt.getRecentPostTitles
     defaults:
-        _controller: bd_wordpress_api.controller:getRecentPosts
+        _controller: bd_wordpress_api.controller.posts:getRecentPosts
 
 wordpress_api.mt.getCategoryList:
     path: /xmlrpc/mt.getCategoryList
@@ -51,7 +51,7 @@ wordpress_api.metaWeblog.getCategories:
 wordpress_api.metaWeblog.getRecentPosts:
     path: /xmlrpc/metaWeblog.getRecentPosts
     defaults:
-        _controller: bd_wordpress_api.controller.metaweblog:getRecentPosts
+        _controller: bd_wordpress_api.controller.post:getRecentPosts
 
 wordpress_api.metaWeblog.newPost:
     path: /xmlrpc/metaWeblog.newPost
@@ -71,7 +71,7 @@ wordpress_api.metaWeblog.deletePost:
 wordpress_api.metaWeblog.getPost:
     path: /xmlrpc/metaWeblog.getPost/{postId}
     defaults:
-        _controller: bd_wordpress_api.controller:getPost
+        _controller: bd_wordpress_api.controller.post:getPost
 
 wordpress_api.metaWeblog.getPostCategories:
     path: /xmlrpc/metaWeblog.getPostCategories
@@ -86,7 +86,7 @@ wordpress_api.system.listMethods:
 wordpress_api.wp.getUsersBlogs:
     path: /xmlrpc/wp.getUsersBlogs
     defaults:
-        _controller: bd_wordpress_api.controller:getUsersBlogs
+        _controller: bd_wordpress_api.controller.users:getUsersBlogs
 
 wordpress_api.wp.getOptions:
     path: /xmlrpc/wp.getOptions

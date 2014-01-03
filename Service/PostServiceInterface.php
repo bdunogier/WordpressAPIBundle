@@ -35,4 +35,11 @@ interface PostServiceInterface
      * @throws \eZ\Publish\API\Repository\Exceptions\UnauthorizedException
      */
     public function deletePost( $postId );
+
+    /**
+     * Retrieves the post with ID $postId
+     * @param int $postId
+     * @return array
+     */
+    public function getPost( $postId );
 }

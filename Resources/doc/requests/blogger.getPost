@@ -1,8 +1,13 @@
 #!/bin/sh
 echo '<?xml version="1.0" encoding="utf-8"?>
 <methodCall>
- <methodName>metaWeblog.getPost</methodName>
+ <methodName>blogger.getPost</methodName>
  <params>
+  <param>
+   <value>
+    <string>appkey</string>
+   </value>
+  </param>
   <param>
    <value>
     <string>470</string>
@@ -19,4 +24,4 @@ echo '<?xml version="1.0" encoding="utf-8"?>
    </value>
   </param>
  </params>
-</methodCall>' | http -v POST "http://vm:88/xmlrpc.php" "Content-Type:text/xml"
+</methodCall>' | http -v POST "http://vm:88/xmlrpc.php" "Content-Type:text/xml" $XDEBUG_COOKIE

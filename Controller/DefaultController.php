@@ -55,33 +55,9 @@ class DefaultController
         $this->userService = $repository->getUserService();
     }
 
-    public function getUsersBlogs()
-    {
-        return new Response(
-            array(
-                array(
-                    'isAdmin' => 1,
-                    'url' => 'http://localhost:88/',
-                    'blogid' => 1,
-                    'blogName' => 'eZ Wordpress',
-                    'xmlrpc' => 'http://localhost:88/xmlrpc.php'
-                )
-            )
-        );
-    }
-
     public function getCategoryList()
     {
         return new Response( $this->categoryService->getList() );
-    }
-
-    public function getRecentPosts( Request $request )
-    {
-        return new Response(
-            $this->postService->findRecentPosts(
-                $request->request->has( 'limit' ) ? $request->request->get( 'limit' ) : 5
-            )
-        );
     }
 
     public function newPost( Request $request )
@@ -117,18 +93,6 @@ class DefaultController
     public function getPostCategories( $postId )
     {
         return new Response( $this->categoryService->getPostCategories( $postId ) );
-    }
-
-    public function editPost()
-    {
-        return new Response( true );
-    }
-
-    public function getPost( $postId )
-    {
-        $content = $this->contentService->loadContent( $postId );
-
-        return new Response( $this->serializeContentAsPost( $content ) );
     }
 
     public function getSupportedMethods()
@@ -188,24 +152,6 @@ class DefaultController
             array(
                 'standard' => 'Standard'
             )
-        );
-    }
-
-    protected function serializeContentAsPost( Content $content )
-    {
-        return array(
-            'post_id' => $content->id,
-            'post_title' => (string)$content->fields['title']['eng-GB'],
-            'post_date' => $content->versionInfo->creationDate,
-            'description' => '',
-            'link' => '',
-            'userId' => $content->contentInfo->ownerId,
-            'dateCreated' => $content->versionInfo->creationDate,
-            'date_created_gmt' => $content->versionInfo->creationDate,
-            'date_modified' => $content->versionInfo->modificationDate,
-            'date_modified_gmt' => $content->versionInfo->modificationDate,
-            'wp_post_thumbnail' => 0,
-            'categories' => array(),
         );
     }
 

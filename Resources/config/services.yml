@@ -7,6 +7,8 @@ parameters:
     bd_wordpress_api.controller.post.class: BD\Bundle\WordpressAPIBundle\Controller\Post
     bd_wordpress_api.controller.users.class: BD\Bundle\WordpressAPIBundle\Controller\Users
 
+    bd_wordpress_api.response_decorator.dispatcher.class: BD\Bundle\WordpressAPIBundle\ResponseDecorator\ResponseDecoratorDispatcher
+
 services:
     bd_wordpress_api.controller:
         class: %bd_wordpress_api.controller.class%
@@ -38,6 +40,10 @@ services:
         class: %bd_wordpress_api.controller.post.class%
         arguments:
             - @bd_wordpress_api.service.post
+            - @bd_wordpress_api.response_decorator.dispatcher
 
     bd_wordpress_api.controller.users:
         class: %bd_wordpress_api.controller.users.class%
+
+    bd_wordpress_api.response_decorator.dispatcher:
+        class: %bd_wordpress_api.response_decorator.dispatcher.class%
