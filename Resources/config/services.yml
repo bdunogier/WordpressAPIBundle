@@ -5,22 +5,7 @@ parameters:
     bd_wordpress_api.controller.wordpress.class: BD\Bundle\WordpressAPIBundle\Controller\Wordpress
     bd_wordpress_api.controller.media.class: BD\Bundle\WordpressAPIBundle\Controller\Media
     bd_wordpress_api.controller.post.class: BD\Bundle\WordpressAPIBundle\Controller\Post
-
-    bd_wordpress_api.xml_rpc.param_processor.blogger.get_user_info.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\Blogger\GetUserInfo
-    bd_wordpress_api.xml_rpc.param_processor.blogger.get_post.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\Blogger\GetPost
-    bd_wordpress_api.xml_rpc.param_processor.blogger.delete_post.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\Blogger\DeletePost
-    bd_wordpress_api.xml_rpc.param_processor.metaweblog.get_post.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\MetaWeblog\GetPost
-    bd_wordpress_api.xml_rpc.param_processor.metaweblog.delete_post.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\MetaWeblog\DeletePost
-    bd_wordpress_api.xml_rpc.param_processor.metaweblog.new_post.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\MetaWeblog\NewPost
-    bd_wordpress_api.xml_rpc.param_processor.metaweblog.get_recent_posts.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\MetaWeblog\GetRecentPosts
-    bd_wordpress_api.xml_rpc.param_processor.mt.get_post_categories.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\MovableType\GetPostCategories
-    bd_wordpress_api.xml_rpc.param_processor.mt.set_post_categories.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\MovableType\SetPostCategories
-    bd_wordpress_api.xml_rpc.param_processor.mt.get_recent_post_titles.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\MovableType\GetRecentPostTitles
-    bd_wordpress_api.xml_rpc.param_processor.wp.get_options.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\Wordpress\GetOptions
-    bd_wordpress_api.xml_rpc.param_processor.wp.get_media_library.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\Wordpress\GetMediaLibrary
-    bd_wordpress_api.xml_rpc.param_processor.wp.get_media_item.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\Wordpress\GetMediaItem
-    bd_wordpress_api.xml_rpc.param_processor.wp.upload_media_file.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\Wordpress\UploadMediaFile
-    bd_wordpress_api.xml_rpc.param_processor.wp.delete_post.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\Wordpress\DeletePost
+    bd_wordpress_api.controller.users.class: BD\Bundle\WordpressAPIBundle\Controller\Users
 
 services:
     bd_wordpress_api.controller:
@@ -54,78 +39,5 @@ services:
         arguments:
             - @bd_wordpress_api.service.post
 
-    bd_wordpress_api.xml_rpc.param_processor.blogger.get_user_info:
-        class: %bd_wordpress_api.xml_rpc.param_processor.blogger.get_user_info.class%
-        tags:
-            - { name: bdxmlrpc.parameters_processor, methodName: blogger.getUserInfo }
-            - { name: bdxmlrpc.parameters_processor, methodName: wp.getProfile }
-
-    bd_wordpress_api.xml_rpc.param_processor.blogger.get_post:
-        class: %bd_wordpress_api.xml_rpc.param_processor.blogger.get_post.class%
-        tags:
-            - { name: bdxmlrpc.parameters_processor, methodName: blogger.getPost }
-
-    bd_wordpress_api.xml_rpc.param_processor.blogger.delete_post:
-        class: %bd_wordpress_api.xml_rpc.param_processor.blogger.delete_post.class%
-        tags:
-            - { name: bdxmlrpc.parameters_processor, methodName: blogger.deletePost }
-
-    bd_wordpress_api.xml_rpc.param_processor.metaweblog.get_post:
-        class: %bd_wordpress_api.xml_rpc.param_processor.metaweblog.get_post.class%
-        tags:
-            - { name: bdxmlrpc.parameters_processor, methodName: metaWeblog.getPost }
-
-    bd_wordpress_api.xml_rpc.param_processor.metaweblog.delete_post:
-        class: %bd_wordpress_api.xml_rpc.param_processor.metaweblog.delete_post.class%
-        tags:
-            - { name: bdxmlrpc.parameters_processor, methodName: metaWeblog.deletePost }
-
-    bd_wordpress_api.xml_rpc.param_processor.metaweblog.new_post:
-        class: %bd_wordpress_api.xml_rpc.param_processor.metaweblog.new_post.class%
-        tags:
-            - { name: bdxmlrpc.parameters_processor, methodName: metaWeblog.newPost }
-
-    bd_wordpress_api.xml_rpc.param_processor.metaweblog.get_recent_posts:
-        class: %bd_wordpress_api.xml_rpc.param_processor.metaweblog.get_recent_posts.class%
-        tags:
-            - { name: bdxmlrpc.parameters_processor, methodName: metaWeblog.getRecentPosts }
-
-    bd_wordpress_api.xml_rpc.param_processor.mt.get_post_categories:
-        class: %bd_wordpress_api.xml_rpc.param_processor.mt.get_post_categories.class%
-        tags:
-            - { name: bdxmlrpc.parameters_processor, methodName: mt.getPostCategories }
-
-    bd_wordpress_api.xml_rpc.param_processor.mt.set_post_categories:
-        class: %bd_wordpress_api.xml_rpc.param_processor.mt.set_post_categories.class%
-        tags:
-            - { name: bdxmlrpc.parameters_processor, methodName: mt.setPostCategories }
-
-    bd_wordpress_api.xml_rpc.param_processor.mt.get_recent_post_titles:
-        class: %bd_wordpress_api.xml_rpc.param_processor.mt.get_recent_post_titles.class%
-        tags:
-            - { name: bdxmlrpc.parameters_processor, methodName: mt.getRecentPostTitles }
-
-    bd_wordpress_api.xml_rpc.param_processor.wp.get_options:
-        class: %bd_wordpress_api.xml_rpc.param_processor.wp.get_options.class%
-        tags:
-            - { name: bdxmlrpc.parameters_processor, methodName: wp.getOptions }
-
-    bd_wordpress_api.xml_rpc.param_processor.wp.get_media_library:
-        class: %bd_wordpress_api.xml_rpc.param_processor.wp.get_media_library.class%
-        tags:
-            - { name: bdxmlrpc.parameters_processor, methodName: wp.getMediaLibrary }
-
-    bd_wordpress_api.xml_rpc.param_processor.wp.get_media_item:
-        class: %bd_wordpress_api.xml_rpc.param_processor.wp.get_media_item.class%
-        tags:
-            - { name: bdxmlrpc.parameters_processor, methodName: wp.getMediaItem }
-
-    bd_wordpress_api.xml_rpc.param_processor.wp.upload_media_file:
-        class: %bd_wordpress_api.xml_rpc.param_processor.wp.upload_media_file.class%
-        tags:
-            - { name: bdxmlrpc.parameters_processor, methodName: wp.uploadFile }
-
-    bd_wordpress_api.xml_rpc.param_processor.wp.delete_post:
-        class: %bd_wordpress_api.xml_rpc.param_processor.wp.delete_post.class%
-        tags:
-            - { name: bdxmlrpc.parameters_processor, methodName: wp.deletePost }
+    bd_wordpress_api.controller.users:
+        class: %bd_wordpress_api.controller.users.class%
