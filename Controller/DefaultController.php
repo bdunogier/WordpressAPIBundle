@@ -60,20 +60,6 @@ class DefaultController
         return new Response( $this->categoryService->getList() );
     }
 
-    public function newPost( Request $request )
-    {
-        $this->login( $request->request->get( 'username' ), $request->request->get( 'password' ) );
-        $postData = $request->request->get( 'content' );
-
-        return new Response(
-            $this->postService->createPost(
-                $postData['title'],
-                $postData['description'],
-                $postData['categories']
-            )
-        );
-    }
-
     public function setPostCategories( $postId, Request $request )
     {
         $this->login( $request->request->get( 'username' ), $request->request->get( 'password' ) );

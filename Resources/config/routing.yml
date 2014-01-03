@@ -56,12 +56,12 @@ wordpress_api.metaWeblog.getRecentPosts:
 wordpress_api.metaWeblog.newPost:
     path: /xmlrpc/metaWeblog.newPost
     defaults:
-        _controller: bd_wordpress_api.controller:newPost
+        _controller: bd_wordpress_api.controller.post:newPost
 
 wordpress_api.metaWeblog.editpost:
     path: /xmlrpc/metaWeblog.editPost
     defaults:
-        _controller: bd_wordpress_api.controller:editPost
+        _controller: bd_wordpress_api.controller.post:editPost
 
 wordpress_api.metaWeblog.deletePost:
     path: /xmlrpc/metaWeblog.deletePost/{postId}

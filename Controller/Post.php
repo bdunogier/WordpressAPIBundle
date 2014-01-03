@@ -61,4 +61,17 @@ class Post
             )
         );
     }
+
+    public function newPost( Request $request )
+    {
+        $postData = $request->request->get( 'content' );
+
+        return new Response(
+            $this->postService->createPost(
+                $postData['title'],
+                $postData['description'],
+                $postData['categories']
+            )
+        );
+    }
 }
