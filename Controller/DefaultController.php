@@ -124,15 +124,6 @@ class DefaultController
         return new Response( true );
     }
 
-    public function deletePost( $postId, Request $request )
-    {
-        $this->login( $request->request->get( 'username' ), $request->request->get( 'password' ) );
-        $this->contentService->deleteContent(
-            $this->contentService->loadContentInfo( $postId )
-        );
-        return new Response( true );
-    }
-
     public function getPost( $postId )
     {
         $content = $this->contentService->loadContent( $postId );

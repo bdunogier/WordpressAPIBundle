@@ -1,7 +1,7 @@
 #!/bin/sh
 echo '<?xml version="1.0" encoding="utf-8"?>
 <methodCall>
- <methodName>blogger.getUserInfo</methodName>
+ <methodName>blogger.deletePost</methodName>
  <params>
   <param>
    <value>
@@ -10,7 +10,7 @@ echo '<?xml version="1.0" encoding="utf-8"?>
   </param>
   <param>
    <value>
-    <string>id</string>
+    <string>485</string>
    </value>
   </param>
   <param>

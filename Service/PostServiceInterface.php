@@ -16,6 +16,8 @@ interface PostServiceInterface
      * @param string $title
      * @param string $description
      * @param array $categories
+     * @throws \eZ\Publish\API\Repository\Exceptions\UnauthorizedException
+     * @throws \eZ\Publish\API\Repository\Exceptions\NotFoundException If a category isn't found
      * @return int the created post ID
      */
     public function createPost( $title, $description, array $categories );
@@ -25,4 +27,12 @@ interface PostServiceInterface
      * @return array
      */
     public function findRecentPosts( $limit = 5 );
+
+    /**
+     * Deletes the post with ID $postId
+     * @param int $postId
+     * @throws \eZ\Publish\API\Repository\Exceptions\NotFoundException
+     * @throws \eZ\Publish\API\Repository\Exceptions\UnauthorizedException
+     */
+    public function deletePost( $postId );
 }
