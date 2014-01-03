@@ -1,7 +1,6 @@
 parameters:
     bd_wordpress_api.controller.class: BD\Bundle\WordpressAPIBundle\Controller\DefaultController
     bd_wordpress_api.controller.options.class: BD\Bundle\WordpressAPIBundle\Controller\Options
-    bd_wordpress_api.controller.metaweblog.class: BD\Bundle\WordpressAPIBundle\Controller\MetaWeblog
     bd_wordpress_api.controller.wordpress.class: BD\Bundle\WordpressAPIBundle\Controller\Wordpress
     bd_wordpress_api.controller.media.class: BD\Bundle\WordpressAPIBundle\Controller\Media
     bd_wordpress_api.controller.post.class: BD\Bundle\WordpressAPIBundle\Controller\Post
@@ -23,12 +22,6 @@ services:
     bd_wordpress_api.controller.wordpress:
         class: %bd_wordpress_api.controller.wordpress.class%
         arguments:
-            - @bd_wordpress_api.service.category
-
-    bd_wordpress_api.controller.metaweblog:
-        class: %bd_wordpress_api.controller.metaweblog.class%
-        arguments:
-            - @ezpublish.api.repository
             - @bd_wordpress_api.service.category
 
     bd_wordpress_api.controller.media:
