@@ -16,7 +16,7 @@ wordpress_api.blogger.getPost:
 wordpress_api.blogger.deletePost:
     path: /xmlrpc/blogger.deletePost/{postId}
     defaults:
-        _controller: bd_wordpress_api.controller:deletePost
+        _controller: bd_wordpress_api.controller.post:deletePost
 
 wordpress_api.mt.getRecentPostTitles:
     path: /xmlrpc/mt.getRecentPostTitles
@@ -127,3 +127,8 @@ wordpress_api.wp.uploadFile:
     path: /xmlrpc/wp.uploadFile
     defaults:
         _controller: bd_wordpress_api.controller.media:uploadFile
+
+wordpress_api.wp.deletePost:
+    path: /xmlrpc/wp.deletePost/{postId}
+    defaults:
+        _controller: bd_wordpress_api.controller.post:deletePost

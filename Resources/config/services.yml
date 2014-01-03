@@ -4,6 +4,7 @@ parameters:
     bd_wordpress_api.controller.metaweblog.class: BD\Bundle\WordpressAPIBundle\Controller\MetaWeblog
     bd_wordpress_api.controller.wordpress.class: BD\Bundle\WordpressAPIBundle\Controller\Wordpress
     bd_wordpress_api.controller.media.class: BD\Bundle\WordpressAPIBundle\Controller\Media
+    bd_wordpress_api.controller.post.class: BD\Bundle\WordpressAPIBundle\Controller\Post
 
     bd_wordpress_api.xml_rpc.param_processor.blogger.get_user_info.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\Blogger\GetUserInfo
     bd_wordpress_api.xml_rpc.param_processor.blogger.get_post.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\Blogger\GetPost
@@ -19,6 +20,7 @@ parameters:
     bd_wordpress_api.xml_rpc.param_processor.wp.get_media_library.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\Wordpress\GetMediaLibrary
     bd_wordpress_api.xml_rpc.param_processor.wp.get_media_item.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\Wordpress\GetMediaItem
     bd_wordpress_api.xml_rpc.param_processor.wp.upload_media_file.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\Wordpress\UploadMediaFile
+    bd_wordpress_api.xml_rpc.param_processor.wp.delete_post.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\Wordpress\DeletePost
 
 services:
     bd_wordpress_api.controller:
@@ -46,6 +48,11 @@ services:
         class: %bd_wordpress_api.controller.media.class%
         arguments:
             - @bd_wordpress_api.service.media
+
+    bd_wordpress_api.controller.post:
+        class: %bd_wordpress_api.controller.post.class%
+        arguments:
+            - @bd_wordpress_api.service.post
 
     bd_wordpress_api.xml_rpc.param_processor.blogger.get_user_info:
         class: %bd_wordpress_api.xml_rpc.param_processor.blogger.get_user_info.class%
@@ -117,3 +124,8 @@ services:
         class: %bd_wordpress_api.xml_rpc.param_processor.wp.upload_media_file.class%
         tags:
             - { name: bdxmlrpc.parameters_processor, methodName: wp.uploadFile }
+
+    bd_wordpress_api.xml_rpc.param_processor.wp.delete_post:
+        class: %bd_wordpress_api.xml_rpc.param_processor.wp.delete_post.class%
+        tags:
+            - { name: bdxmlrpc.parameters_processor, methodName: wp.deletePost }
