@@ -1,0 +1,27 @@
+#!/bin/sh
+echo '<?xml version="1.0" encoding="utf-8"?>
+<methodCall>
+	<methodName>wp.deletePost</methodName>
+	<params>
+		<param>
+			<value>
+				<i4>1</i4>
+			</value>
+		</param>
+		<param>
+			<value>
+				<string>admin</string>
+			</value>
+		</param>
+		<param>
+			<value>
+				<string>publish</string>
+			</value>
+		</param>
+		<param>
+			<value>
+				<string>1388680555452</string>
+			</value>
+		</param>
+	</params>
+</methodCall>' | http -v POST "http://vm:88/xmlrpc.php" "Content-Type:text/xml"
