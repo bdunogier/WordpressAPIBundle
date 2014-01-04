@@ -5,6 +5,7 @@ parameters:
     bd_wordpress_api.xml_rpc.param_processor.metaweblog.get_post.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\MetaWeblog\GetPost
     bd_wordpress_api.xml_rpc.param_processor.metaweblog.delete_post.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\MetaWeblog\DeletePost
     bd_wordpress_api.xml_rpc.param_processor.metaweblog.new_post.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\MetaWeblog\NewPost
+    bd_wordpress_api.xml_rpc.param_processor.metaweblog.edit_post.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\MetaWeblog\EditPost
     bd_wordpress_api.xml_rpc.param_processor.metaweblog.get_recent_posts.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\MetaWeblog\GetRecentPosts
     bd_wordpress_api.xml_rpc.param_processor.mt.get_post_categories.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\MovableType\GetPostCategories
     bd_wordpress_api.xml_rpc.param_processor.mt.set_post_categories.class: BD\Bundle\WordpressAPIBundle\XmlRpc\ParametersProcessor\MovableType\SetPostCategories
@@ -48,6 +49,11 @@ services:
         class: %bd_wordpress_api.xml_rpc.param_processor.metaweblog.new_post.class%
         tags:
             - { name: bdxmlrpc.parameters_processor, methodName: metaWeblog.newPost }
+
+    bd_wordpress_api.xml_rpc.param_processor.metaweblog.edit_post:
+        class: %bd_wordpress_api.xml_rpc.param_processor.metaweblog.edit_post.class%
+        tags:
+            - { name: bdxmlrpc.parameters_processor, methodName: metaWeblog.editPost }
 
     bd_wordpress_api.xml_rpc.param_processor.metaweblog.get_recent_posts:
         class: %bd_wordpress_api.xml_rpc.param_processor.metaweblog.get_recent_posts.class%

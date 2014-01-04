@@ -46,7 +46,8 @@ interface PostServiceInterface
     /**
      * Edits the post with ID $postId
      * @param int $postId
+     * @param array $content
      * @return array
      */
-    public function editPost( $postId );
+    public function editPost( $postId, array $content );
 }
