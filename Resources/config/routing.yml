@@ -137,3 +137,8 @@ wordpress_api.wp.getPost:
     path: /xmlrpc/wp.getPost/{postId}
     defaults:
         _controller: bd_wordpress_api.controller.post:getPost
+
+wordpress_api.wp.editpost:
+    path: /xmlrpc/wp.editPost
+    defaults:
+        _controller: bd_wordpress_api.controller.post:editPost

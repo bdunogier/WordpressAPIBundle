@@ -68,8 +68,8 @@ class Post
 
         return new Response(
             $this->postService->createPost(
-                $postData['title'],
-                $postData['description'],
+                $postData['post_title'],
+                $postData['post_content'],
                 $postData['categories']
             )
         );

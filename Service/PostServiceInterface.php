@@ -42,4 +42,11 @@ interface PostServiceInterface
      * @return array
      */
     public function getPost( $postId );
+
+    /**
+     * Edits the post with ID $postId
+     * @param int $postId
+     * @return array
+     */
+    public function editPost( $postId );
 }
