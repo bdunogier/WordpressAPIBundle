@@ -66,13 +66,9 @@ class Post
 
     public function newPost( Request $request )
     {
-        $postData = $request->request->get( 'content' );
-
         return new Response(
             $this->postService->createPost(
-                $postData['post_title'],
-                $postData['post_content'],
-                $postData['categories']
+                $request->request->get( 'content' )
             )
         );
     }
