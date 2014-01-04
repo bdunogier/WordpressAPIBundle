@@ -13,14 +13,12 @@ interface PostServiceInterface
 {
     /**
      * Creates a new post
-     * @param string $title
-     * @param string $description
-     * @param array $categories
+     * @param array $content Post content. Keys: post_title, post_content,
      * @throws \eZ\Publish\API\Repository\Exceptions\UnauthorizedException
      * @throws \eZ\Publish\API\Repository\Exceptions\NotFoundException If a category isn't found
      * @return int the created post ID
      */
-    public function createPost( $title, $description, array $categories );
+    public function createPost( array $content );
 
     /**
      * @param int $limit
@@ -42,4 +40,12 @@ interface PostServiceInterface
      * @return array
      */
     public function getPost( $postId );
+
+    /**
+     * Edits the post with ID $postId
+     * @param int $postId
+     * @param array $content
+     * @return array
+     */
+    public function editPost( $postId, array $content );
 }

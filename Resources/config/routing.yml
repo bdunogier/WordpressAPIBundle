@@ -59,7 +59,7 @@ wordpress_api.metaWeblog.newPost:
         _controller: bd_wordpress_api.controller.post:newPost
 
 wordpress_api.metaWeblog.editpost:
-    path: /xmlrpc/metaWeblog.editPost
+    path: /xmlrpc/metaWeblog.editPost/{postId}
     defaults:
         _controller: bd_wordpress_api.controller.post:editPost
 
@@ -137,3 +137,8 @@ wordpress_api.wp.getPost:
     path: /xmlrpc/wp.getPost/{postId}
     defaults:
         _controller: bd_wordpress_api.controller.post:getPost
+
+wordpress_api.wp.editpost:
+    path: /xmlrpc/wp.editPost
+    defaults:
+        _controller: bd_wordpress_api.controller.post:editPost

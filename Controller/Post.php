@@ -47,9 +47,11 @@ class Post
         );
     }
 
-    public function editPost()
+    public function editPost( $postId, Request $request)
     {
-        return new Response( true );
+        return new Response(
+            $this->postService->editPost( $postId, $request->request->get( 'content' ) )
+        );
     }
 
     public function getPost( $postId, Request $request )
@@ -64,13 +66,9 @@ class Post
 
     public function newPost( Request $request )
     {
-        $postData = $request->request->get( 'content' );
-
         return new Response(
             $this->postService->createPost(
-                $postData['title'],
-                $postData['description'],
-                $postData['categories']
+                $request->request->get( 'content' )
             )
         );
     }
