@@ -11,5 +11,6 @@ class BDWordpressAPIBundle extends Bundle
     {
         parent::build( $container );
         $container->addCompilerPass( new DependencyInjection\Compiler\ResponseDecoratorCompilerPass() );
+        $container->addCompilerPass( new DependencyInjection\Compiler\AuthenticationHandlerCompilerPass() );
     }
 }
