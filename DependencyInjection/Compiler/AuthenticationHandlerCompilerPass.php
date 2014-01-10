@@ -24,10 +24,7 @@ class AuthenticationHandlerCompilerPass implements CompilerPassInterface
         $taggedServices = $container->findTaggedServiceIds( 'bd_wordpress_api.authentication_handler' );
         foreach ( $taggedServices as $taggedServiceId => $tagAttributes )
         {
-            foreach ( $tagAttributes as $attribute )
-            {
-                $handlers[] = new Reference( $taggedServiceId );
-            }
+            $handlers[] = new Reference( $taggedServiceId );
         }
 
         if ( count( $handlers ) > 0 )

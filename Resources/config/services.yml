@@ -46,6 +46,7 @@ services:
 
     bd_wordpress_api.authentication_request_listener:
         class: %bd_wordpress_api.authentication_request_listener.class%
+        arguments: [@bd_wordpress_api.authentication_dispatcher]
         tags:
             - { name: kernel.event_subscriber }
 
