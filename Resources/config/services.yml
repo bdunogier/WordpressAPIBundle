@@ -8,6 +8,9 @@ parameters:
 
     bd_wordpress_api.response_decorator.dispatcher.class: BD\Bundle\WordpressAPIBundle\ResponseDecorator\ResponseDecoratorDispatcher
 
+    bd_wordpress_api.authentication_dispatcher.class: BD\Bundle\WordpressAPIBundle\Authentication\AuthenticationDispatcher
+    bd_wordpress_api.authentication_request_listener.class: BD\Bundle\WordpressAPIBundle\EventListener\AuthenticationRequestListener
+
 services:
     bd_wordpress_api.controller:
         class: %bd_wordpress_api.controller.class%
@@ -40,3 +43,11 @@ services:
 
     bd_wordpress_api.response_decorator.dispatcher:
         class: %bd_wordpress_api.response_decorator.dispatcher.class%
+
+    bd_wordpress_api.authentication_request_listener:
+        class: %bd_wordpress_api.authentication_request_listener.class%
+        tags:
+            - { name: kernel.event_subscriber }
+
+    bd_wordpress_api.authentication_dispatcher:
+        class: %bd_wordpress_api.authentication_dispatcher.class%
