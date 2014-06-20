@@ -56,3 +56,4 @@ removal of existing posts.
 - MetaWeblog API: http://codex.wordpress.org/XML-RPC_MetaWeblog_API
 - Wordpress API: http://codex.wordpress.org/XML-RPC_WordPress_API
 
+[![Analytics](https://ga-beacon.appspot.com/UA-52121860-1/WordpressAPIBundle/readme)](https://github.com/igrigorik/ga-beacon)
